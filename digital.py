@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from requests import get
 
 
-def parce(mes):
+def parse(mes):
     new = 'catalog/?q=' + mes
     rel = []
     with open('base.csv', mode='w', encoding='utf8') as f:

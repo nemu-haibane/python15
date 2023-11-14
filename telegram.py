@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import telebot
 
 # файл дляпарсинга данных
-from digital import parce
+from digital import parse
 
 
 # метода ищет файл env и переменные из него
@@ -27,7 +27,7 @@ def send_welcome(message):
 def parse_site(message):
     text = message.text.split()[1]
     chat_id = message.chat.id
-    q = parce(text)
+    q = parse(text)
     for it in q[:20]:
         bot.send_message(chat_id, f'{it[0]} - {it[1]}')
 
@@ -39,7 +39,7 @@ def send_file(message):
         with open('base.csv') as f:
             bot.send_document(chat_id, f)
     else:
-        bot.send_message(chat_id, 'Файл не сформирован. Используйте команду /parce для его формирования')
+        bot.send_message(chat_id, 'Файл не сформирован. Используйте команду /parse для его формирования')
 
 
 @bot.message_handler(func=lambda m: True)
